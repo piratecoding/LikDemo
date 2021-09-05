@@ -1,0 +1,42 @@
+﻿@model List<LikDemo.Models.ViewModels.InvoiceViewModel>
+@using LikDemo.Constants
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+
+<div>
+    <h1 class="float-left">List of invoices</h1>
+
+    <a href="@Url.Action("Create", "Invoices")" class="btn btn-success float-right">
+        Add new invoice
+    </a>
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Net amount</th>
+                <th>Currency</th>
+                <th>Due date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Type</td>
+                    <td>@item.Date.ToString("MMM.dd.yyyy.")</td>
+                    <td>@item.NetAmount</td>
+                    <td>@item.Currency</td>
+                    <td>@item.DueDate.ToString(DateFormat.StandardDateFormat)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
